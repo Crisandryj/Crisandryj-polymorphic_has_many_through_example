@@ -20,7 +20,7 @@ class UserTest < ActiveSupport::TestCase
   test "has many podcast through subscriptions" do
     user = User.create
     podcast1 = Podcast.create
-    subscription1 = user.subscription.create(subscribable: podcast1)
+    subscription1 = user.subscriptions.create(subscribable: podcast1)
     podcast2 = Podcast.create
     subscription2 = user.subscriptions.create(subscribable: podcast2)
 
@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
   test "has many newspapers through subscriptions" do
     user = User.create
     newspaper1 = Newspaper.create
-    subscription1 = user.subscription.create(subscribable: newspaper1)
+    subscription1 = user.subscriptions.create(subscribable: newspaper1)
     newspaper2 = Newspaper.create
     subscription2 = user.subscriptions.create(subscribable: newspaper2)
 
