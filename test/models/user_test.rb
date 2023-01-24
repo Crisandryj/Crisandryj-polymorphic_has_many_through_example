@@ -17,5 +17,27 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(user.subscriptions[1], subscription2)
   end
 
-  test ""
+  test "has many podcast through subscriptions" do
+    user = User.create
+    podcast1 = Podcast.create
+    subscription1 = user.subscription.create(subscribable: podcast1)
+    podcast2 = Podcast.create
+    subscription2 = user.subscriptions.create(subscribable: podcast2)
+
+    assert_equal(user.podcasts.length, 2)
+    assert_equal(user.podcasts[0], podcast1)
+    assert_equal(user.podcasts[1], podcast2)
+  end
+
+  test "has many newspapers through subscriptions" do
+    user = User.create
+    newspaper1 = Newspaper.create
+    subscription1 = user.subscription.create(subscribable: newspaper1)
+    newspaper2 = Newspaper.create
+    subscription2 = user.subscriptions.create(subscribable: newspaper2)
+
+    assert_equal(user.newspapers.length, 2)
+    assert_equal(user.newspapers[0], newspaper1)
+    assert_equal(user.newspapers[1], newspaper2)
+  end
 end
