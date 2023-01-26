@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_235526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "bot_id", null: false
-    t.index ["bot_id"], name: "index_subscriptions_on_bot_id"
+    t.integer "subscriber_id"
+    t.string "subscriber_type"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
@@ -46,6 +46,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_235526) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "subscriptions", "bots"
   add_foreign_key "subscriptions", "users"
 end
